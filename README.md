@@ -7,6 +7,16 @@ To test if number is a prime, ALL of the following must be true of the number be
 - the value of `number` is greater than or equal to 2
 - the value of `number` is less than or equal to 10,000,000
 
+## How to get up and running locally
+This assumes you've got a shell open and in the root of the repo, and the php version is 7.2 or greater
+```lang=bash
+./composer.phar install
+./composer.phar serve
+```
+
+There's also a few composer scripts added to make the code quality checks easier to run repeatedly. Have a look in the
+composer.json for these
+
 ## Examples
 ### Testing a prime number
 ```bash
