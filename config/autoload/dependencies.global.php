@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Dal\KnownPrimesInterface;
+
 return [
     // Provides application-wide services.
     // We recommend using fully-qualified class names whenever possible as
@@ -17,10 +19,12 @@ return [
         // class name.
         'invokables' => [
             // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
+            \App\Dal\KnownPrimesInterface::class => \App\Dal\KnownPrimes::class,
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories'  => [
-            // Fully\Qualified\ClassName::class => Fully\Qualified\FactoryName::class,
+            \App\Calculator\Calculator::class => \App\Calculator\CalculatorFactory::class,
+            \App\Handler\IsPrime::class => \App\Handler\IsPrimeFactory::class,
         ],
     ],
 ];
