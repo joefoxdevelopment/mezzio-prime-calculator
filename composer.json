@@ -51,14 +51,15 @@
         "laminas/laminas-zendframework-bridge": "^1.0",
         "mezzio/mezzio": "^3.2.1",
         "mezzio/mezzio-fastroute": "^3.0.3",
-        "mezzio/mezzio-helpers": "^5.3",
-        "phpmd/phpmd": "^2.12"
+        "mezzio/mezzio-helpers": "^5.3"
     },
     "require-dev": {
         "filp/whoops": "^2.7.1",
         "laminas/laminas-development-mode": "^3.2",
         "mezzio/mezzio-tooling": "^1.3",
+        "phpmd/phpmd": "^2.12",
         "phpspec/prophecy": "^1.10.3",
+        "phpstan/phpstan": "^1.7",
         "phpunit/phpunit": "^8.5",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^2.9.2"
@@ -90,6 +91,13 @@
         "cs-fix": "phpcbf",
         "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "cs": "phpcs",
+        "md": "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
+        "all-cq-checks": [
+            "phpunit --colors=always",
+            "phpcs",
+            "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\""
+        ]
     }
 }

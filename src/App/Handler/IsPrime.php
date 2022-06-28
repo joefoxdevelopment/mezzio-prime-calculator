@@ -50,7 +50,10 @@ class IsPrime implements RequestHandlerInterface
         Assert::that($queryParams, 'Query parameter "number" not set')
             ->keyExists('number');
 
-        Assert::that($queryParams['number'], 'Query parameter "number" must be an integer greater than or equal to 2 and less than or equal to 10000000')
+        Assert::that(
+            $queryParams['number'],
+            'Query parameter "number" must be an integer greater than or equal to 2 and less than or equal to 10000000'
+        )
             ->integerish()
             ->min(2)
             ->max(10000000);
