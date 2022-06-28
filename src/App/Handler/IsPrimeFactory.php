@@ -12,6 +12,9 @@ class IsPrimeFactory
 {
     public function __invoke(ContainerInterface $container): RequestHandlerInterface
     {
-        return new IsPrime($container->get(Calculator::class));
+        /** @var Calculator */
+        $calculator = $container->get(Calculator::class);
+
+        return new IsPrime($calculator);
     }
 }

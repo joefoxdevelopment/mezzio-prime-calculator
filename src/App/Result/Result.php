@@ -9,9 +9,16 @@ class Result
     public const METHOD_CALCULATED = 'Calculated';
     public const METHOD_DATASTORE  = 'Datastore';
 
+    /** @var int */
     private $number;
+
+    /** @var bool */
     private $isPrime;
+
+    /** @var string */
     private $calculationMethod;
+
+    /** @var float|null */
     private $calculationTime = null;
 
     public function __construct(int $number, bool $isPrime, string $calculationMethod, ?float $calculationTime = null)
@@ -22,6 +29,9 @@ class Result
         $this->calculationTime   = $calculationTime;
     }
 
+    /**
+     * @return array{number: int, isPrime: bool, calculationMethod: string, calculationTime: float|null}
+     */
     public function getResultArray(): array
     {
         return [

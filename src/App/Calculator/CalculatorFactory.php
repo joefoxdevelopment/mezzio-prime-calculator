@@ -13,6 +13,9 @@ class CalculatorFactory
 {
     public function __invoke(ContainerInterface $container): Calculator
     {
-        return new Calculator($container->get(KnownPrimesInterface::class));
+        /** @var KnownPrimesInterface */
+        $knownPrimes = $container->get(KnownPrimesInterface::class);
+
+        return new Calculator($knownPrimes);
     }
 }

@@ -92,12 +92,13 @@
         "serve": "php -S 0.0.0.0:8080 -t public/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
-        "cs": "phpcs",
-        "md": "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
+        "phpcs": "phpcs",
+        "phpmd": "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
         "all-cq-checks": [
             "phpunit --colors=always",
             "phpcs",
-            "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\""
+            "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
+            "php vendor/bin/phpstan analyse -c phpstan.neon"
         ],
         "phpstan": "php vendor/bin/phpstan analyse -c phpstan.neon"
     }

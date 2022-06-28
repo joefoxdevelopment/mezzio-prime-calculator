@@ -30,6 +30,7 @@ class KnownPrimes implements KnownPrimesInterface
         20 => false,
     ];
 
+    /** @SuppressWarnings(PHPMD.StaticAccess) */
     public function get(int $number): ?Result
     {
         if (array_key_exists($number, self::KNOWN_RESULTS)) {

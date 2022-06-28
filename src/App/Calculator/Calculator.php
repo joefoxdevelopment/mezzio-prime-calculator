@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Calculator;
 
 use Assert\Assert;
-use App\Dal\KnownPrimes as KnownPrimesDal;
+use App\Dal\KnownPrimesInterface as KnownPrimesDal;
 use App\Result\Result;
 
 class Calculator
 {
+    /** @var KnownPrimesDal */
     private $knownPrimes;
 
     public function __construct(KnownPrimesDal $knownPrimes)
@@ -17,6 +18,7 @@ class Calculator
         $this->knownPrimes = $knownPrimes;
     }
 
+    /** @SuppressWarnings(PHPMD.StaticAccess) */
     public function isPrime(int $number): Result
     {
         $this->validateNumber($number);

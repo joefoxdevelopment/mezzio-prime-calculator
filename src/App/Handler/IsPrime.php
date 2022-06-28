@@ -15,6 +15,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class IsPrime implements RequestHandlerInterface
 {
+    /** @var Calculator */
     private $calculator;
 
     public function __construct(Calculator $calculator)
