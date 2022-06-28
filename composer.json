@@ -98,6 +98,7 @@
             "phpunit --colors=always",
             "phpcs",
             "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\""
-        ]
+        ],
+        "phpstan": "php vendor/bin/phpstan analyse -c phpstan.neon"
     }
 }
