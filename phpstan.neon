@@ -2,6 +2,6 @@ parameters:
     level: max
     paths:
         - src
-        - test
     excludePaths:
         - src\App\ConfigProvider.php
+        - test

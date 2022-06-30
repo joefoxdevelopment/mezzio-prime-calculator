@@ -63,7 +63,8 @@ class IsPrime implements RequestHandlerInterface
 
         Assert::that(
             $queryParams['number'],
-            'Query parameter "number" must be an integer greater than or equal to 2 and less than or equal to 10000000'
+            'Query parameter "number" must be an integer greater than or equal to 2 and less than or equal'
+            . ' to 10,000,000'
         )
             ->integerish()
             ->min(2)
