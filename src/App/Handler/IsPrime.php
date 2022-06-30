@@ -6,6 +6,7 @@ namespace App\Handler;
 
 use App\Calculator\Calculator;
 use Assert\Assert;
+use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\JsonResponse;
@@ -36,10 +37,19 @@ class IsPrime implements RequestHandlerInterface
             );
         }
 
-        $number = (int) $request->getQueryParams()['number'];
+        try {
+            $result = $this->calculator->isPrime((int) $request->getQueryParams()['number']);
+        } catch (Exception $e) {
+            return new JsonResponse(
+                [
+                    'error' => $e->getMessage(),
+                ],
+                StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR
+            );
+        }
 
         return new JsonResponse(
-            $this->calculator->isPrime($number)->getResultArray(),
+            $result->getResultArray(),
             StatusCodeInterface::STATUS_OK
         );
     }
