@@ -1,6 +1,4 @@
 name: PHP Composer
-with:
-  php-version: '7.2'
   
 on:
   push:
@@ -26,6 +24,7 @@ jobs:
       id: composer-cache
       uses: actions/cache@v3
       with:
+        php-version: '7.2'
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
