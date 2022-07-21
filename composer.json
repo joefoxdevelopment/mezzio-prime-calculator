@@ -95,10 +95,10 @@
         "phpcs": "phpcs src/App/",
         "phpmd": "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
         "all-cq-checks": [
-            "phpunit --colors=always",
-            "phpcs src/App/",
-            "phpmd src/App/ ansi \"cleancode,codesize,controversial,design,naming,unusedcode\"",
-            "php vendor/bin/phpstan analyse -c phpstan.neon"
+            "@test",
+            "@phpcs",
+            "@phpmd",
+            "@phpstan"
         ],
         "phpstan": "php vendor/bin/phpstan analyse -c phpstan.neon"
     }
