@@ -11,6 +11,7 @@ use Exception;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class IsPrimeTest extends TestCase
 {
@@ -24,6 +25,11 @@ class IsPrimeTest extends TestCase
         $this->request    = $this->prophesize(ServerRequestInterface::class);
 
         $this->isPrime = new IsPrime($this->calculator->reveal());
+    }
+
+    private function testImplementsRequestHandlerInterface(): void
+    {
+        $this->assertInstanceOf(RequestHandlerInterface::class, $this->isPrime);
     }
 
     /**
