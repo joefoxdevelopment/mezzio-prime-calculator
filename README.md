@@ -2,6 +2,8 @@
 
 This is a single endpoint api, to determine whether a query param `number` is a prime number.
 
+[![PHP Composer](https://github.com/joefoxdevelopment/mezzio-prime-calculator/actions/workflows/php.yml/badge.svg)](https://github.com/joefoxdevelopment/mezzio-prime-calculator/actions/workflows/php.yml)
+
 To test if number is a prime, ALL of the following must be true of the number being tested
 - the value of `number` is an integer
 - the value of `number` is greater than or equal to 2
