@@ -1,5 +1,5 @@
 name: PHP Composer
-  
+
 on:
   push:
     branches: [ "main" ]
@@ -15,30 +15,38 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - name: Setup PHP with PECL extension
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.1'
-        extensions: imagick, swoole
-    
     - uses: actions/checkout@v3
 
+    # This is what's responsible for setting the right php version
+    # https://github.com/marketplace/actions/setup-php-action
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.2'
+
     - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      run: ./composer.phar validate --strict
 
     - name: Cache Composer packages
       id: composer-cache
       uses: actions/cache@v3
+      with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: ./composer.phar install --prefer-dist --no-progress
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+    - name: PHPUnit
+      run: ./composer.phar run-script test
 
-    # - name: Run test suite
-    #   run: composer run-script test
+    - name: PHP CodeSniffer
+      run: ./composer.phar run-script phpcs
+
+    - name: PHP Mess Detector
+      run: ./composer.phar run-script phpmd
+
+    - name: PHPStan
+      run: ./composer.phar run-script phpstan
